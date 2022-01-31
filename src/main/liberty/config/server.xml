@@ -10,4 +10,12 @@
 	<httpEndpoint host="*" httpPort="${default.http.port}" httpsPort="${default.https.port}" id="defaultHttpEndpoint"/>
 
 	<webApplication location="MongoDBSample.war" contextRoot="/mongo"/>
+	
+
+
+	<cors domain="/mongo/db/crew"
+          allowedOrigins="*"
+          allowedMethods="GET, DELETE, POST, PUT"
+          allowedHeaders="origin, content-type, accept, authorization, cache-control"
+          maxAge="3600" />
 </server>
