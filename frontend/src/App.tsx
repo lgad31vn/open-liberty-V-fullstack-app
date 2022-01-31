@@ -1,7 +1,12 @@
 import './App.css';
+import Login from './components/Login';
 
 function App() {
-  return <div className='text-blue-400 text-2xl p-5 bg-violet-400'>hello</div>;
+  return (
+    <div className='min-h-screen'>
+      <Login />
+    </div>
+  );
 }
 
 export default App;
