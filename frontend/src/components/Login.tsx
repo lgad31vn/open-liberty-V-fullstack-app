@@ -19,11 +19,6 @@ const Input = ({ placeholder, name, type, handleChange }: Props) => {
     />
   );
 };
-const options = [
-  { value: 'captain', label: 'Captain' },
-  { value: 'officer', label: 'Officer' },
-  { value: 'enginer', label: 'Engineer' },
-];
 
 const Login = () => {
   interface FType {
@@ -31,7 +26,14 @@ const Login = () => {
     id: string;
     rank: string;
   }
-  const [items, setItems] = useState<any>({});
+  const a = {
+    name: 'Tony Stark',
+    id: 123,
+    rank: 'Captain',
+  };
+  const b = JSON.stringify(a);
+  const [items, setItems] = useState<any>(b);
+  //   setItems(JSON.stringify(a));
   const [formData, setFormData] = useState<FType>({
     name: '',
     id: '',
@@ -57,24 +59,18 @@ const Login = () => {
     const { name, id, rank } = formData;
 
     if (!name || !id || !rank) return; // do nothing if fields are not filled
-    console.log(`${name} - ${id} - ${rank}`);
+    setItems(JSON.stringify(formData));
     getUsers();
   };
 
-  const getUsers = async () => {
-    const config = {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT',
-        'Access-Control-Allow-Headers':
-          'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers',
-      },
-    };
-    setItems(JSON.stringify(formData));
-
-    const res = await axios.get('http://localhost:9080/mongo/db/crew/', config);
-    // setItems(JSON.stringify(res));
-    // console.log(res);
+  // http:127.0.1:9080/mongo/db/crew
+  const PATH = 'http://127.0.1:9080/mongo/db/crew';
+  const PATH_9083 = 'http://localhost:9083/rest-api/users';
+  const getUsers = () => {
+    fetch(PATH_9083)
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+    // console.log(res.data);
   };
 
   const addUser = async () => {
@@ -91,6 +87,7 @@ const Login = () => {
   useEffect(() => {
     getUsers();
   }, []);
+
   return (
     <div className='flex w-full p-3 justify-center border-[1px]'>
       <div>
@@ -145,16 +142,11 @@ const Login = () => {
             Get All Members
           </button>
         </div>
-        <div className='p-5 sm:w-96 flex flex-col justify-center items-center border-[1px] border-indigo-200 rounded-lg'>
+        <div className='p-5 w-full flex flex-col justify-center items-center border-[1px] border-indigo-200 rounded-lg'>
           <div className='text-lg font-semibold '>API placeholder ...</div>
-          <div className=' pt-10'>
-            {' '}
-            Data from the http requests goes here
-            {/* {items}
-            {items}
-            {items}
-            {items}{' '} */}
-          </div>
+          <div className=' pt-10'> Data from the http requests goes here</div>
+
+          {items}
         </div>
       </div>
     </div>

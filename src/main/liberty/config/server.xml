@@ -11,11 +11,10 @@
 
 	<webApplication location="MongoDBSample.war" contextRoot="/mongo"/>
 	
-
-
-	<cors domain="/mongo/db/crew"
+	
+	<cors domain="/"
           allowedOrigins="*"
-          allowedMethods="GET, DELETE, POST, PUT"
-          allowedHeaders="origin, content-type, accept, authorization, cache-control"
-          maxAge="3600" />
+          allowedMethods="GET, POST, DELETE, PUT"
+          allowCredentials="true"
+          exposeHeaders="MyHeader"/>
 </server>
