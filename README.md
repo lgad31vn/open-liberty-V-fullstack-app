@@ -16,6 +16,23 @@
 ## Database
 
     - MongoDB
+    
+## Demo:
+
+### Backend homepage: 
+
+https://user-images.githubusercontent.com/66233296/151836231-e316e356-255a-46b1-a420-527acca102a1.mov
+
+### Client homepage: 
+- Since CORS is still not fixed, the client uses global states, not the data from database (for now...)
+
+https://user-images.githubusercontent.com/66233296/151837400-f6b642b3-9ada-4c2b-8980-d42300944465.mov
+
+
+### Thunder Client
+https://user-images.githubusercontent.com/66233296/151837419-cd154a6c-1d48-4580-8d8b-c908534a60d9.mov
+
+
 
 ## Instructions on how to run
 
